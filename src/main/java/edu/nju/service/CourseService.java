@@ -15,6 +15,25 @@ import java.util.List;
  */
 @Service
 public class CourseService {
+    public List<CourseVO> transCourse(String a,String b,String c) {
+        List<CourseVO> courseList=new ArrayList<CourseVO>();
+        List<CourseVO> courseListA=transCourseA(a);
+        List<CourseVO> courseListB=transCourseB(b);
+        List<CourseVO> courseListC=transCourseC(c);
+        for(int i=0;i<courseListA.size();i++){
+            courseList.add(courseListA.get(i));
+        }
+        for(int i=0;i<courseListB.size();i++){
+            courseList.add(courseListB.get(i));
+        }
+        for(int i=0;i<courseListC.size();i++){
+            courseList.add(courseListC.get(i));
+        }
+
+
+        return courseList;
+    }
+
 
     public List<CourseVO> transCourseA(String input){
         List<CourseVO> courseList=new ArrayList<CourseVO>();

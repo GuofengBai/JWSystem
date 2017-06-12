@@ -13,6 +13,25 @@ import java.util.List;
  */
 @Service
 public class StudentService {
+    public List<StudentVO> transStudent(String a,String b,String c) {
+        List<StudentVO> studentList=new ArrayList<StudentVO>();
+        List<StudentVO> studentListA=transStudentA(a);
+        List<StudentVO> studentListB=transStudentB(b);
+        List<StudentVO> studentListC=transStudentC(c);
+        for(int i=0;i<studentListA.size();i++){
+            studentList.add(studentListA.get(i));
+        }
+        for(int i=0;i<studentListB.size();i++){
+            studentList.add(studentListB.get(i));
+        }
+        for(int i=0;i<studentListC.size();i++){
+            studentList.add(studentListC.get(i));
+        }
+
+
+        return studentList;
+    }
+    
 
     public List<StudentVO> transStudentA(String input){
         List<StudentVO> studentList=new ArrayList<StudentVO>();
