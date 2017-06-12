@@ -15,23 +15,21 @@
 <body>
 
 <h2>你好，教务员</h2>
-<a href="/login">登出</a><br>
+<a href="<%=request.getContextPath()%>/login">登出</a><br>
 <h2>所有课程</h2>
 <table border="2">
     <tr>
         <td>课程编号</td>
         <td>课程名称</td>
-        <td>课程时长</td>
         <td>课程学分</td>
         <td>任课教师</td>
         <td>上课地点</td>
     </tr>
-    <%--这里的变量名用了CourseVO，拟定课程编号Cno，课程名称Cnm，课程时长Ctm，课程学分Cpt，任课教师Tea，上课地点Pla--%>
+    <%--这里的变量名用了CourseVO，拟定课程编号Cno，课程名称Cnm，课程学分Cpt，任课教师Tea，上课地点Pla--%>
     <c:forEach items="${CourseVO}" var="course">
         <tr>
             <td>${course.Cno}</td>
             <td>${course.Cnm}</td>
-            <td>${course.Ctm}</td>
             <td>${course.Cpt}</td>
             <td>${course.Tea}</td>
             <td>${course.Pla}</td>
@@ -43,17 +41,12 @@
     <tr>
         <td>课程编号</td>
         <td>学生学号</td>
-        <td>课程成绩</td>
-        <td>更改成绩</td>
     </tr>
     <%--这里的变量名用了ElectiveVO，拟定课程编号Cno，学生编号（学号）Sno。成绩Grd--%>
     <c:forEach items="${ElectiveVO}" var="elective">
         <tr>
             <td>${elective.Cno}</td>
             <td>${elective.Sno}</td>
-            <td>${elective.Grd}</td>
-                <%--去更改成绩页面的链接，拟定为change--%>
-            <td><a href="/change/${elective.Sno}/${elective.Cno}"></a></td>
         </tr>
     </c:forEach>
 </table>
