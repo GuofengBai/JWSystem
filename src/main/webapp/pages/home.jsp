@@ -13,7 +13,7 @@
 </head>
 <body>
 
-<h2>你好，同学</h2>
+<h2>你好，${username}同学</h2>
 <a href="<%=request.getContextPath()%>/login">登出</a><br>
 <h2>已选课程</h2>
 <table border="2">
@@ -33,7 +33,7 @@
             <td>${course1.Tea}</td>
             <td>${course1.Pla}</td>
                 <%--需要student变量——学号--%>
-            <td><<a href="<%=request.getContextPath()%>/deleteElective/${userVO.username}/${course1.Cno}">点击退选</a></td>
+            <td><<a href="<%=request.getContextPath()%>/deleteElective/${username}/${course1.Cno}">点击退选</a></td>
         </tr>
     </c:forEach>
 </table>
@@ -55,7 +55,7 @@
             <td>${course2.Tea}</td>
             <td>${course2.Pla}</td>
                 <%--需要student变量——学号--%>
-            <td><<a href="<%=request.getContextPath()%>/elective/${student}/${course2.Cno}">点击选课</a></td>
+            <td><<a href="<%=request.getContextPath()%>/elective/${username}/${course2.Cno}">点击选课</a></td>
         </tr>
     </c:forEach>
 </table>
