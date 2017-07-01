@@ -19,4 +19,8 @@ public interface CourseService {
 
     public List<CourseVO> getAllCourse();
 
+    public List<CourseVO> getSelectedCourse(String id);
+
+    public List<CourseVO> getUnSelectedCourse(String id);
+
 }

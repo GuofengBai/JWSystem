@@ -37,11 +37,21 @@ public class CourseServiceImpl implements CourseService{
     @Override
     public List<CourseVO> getAllCourse() {
         String a,b,c;
-        a="";
-        b="";
-        c="";
+        a=UtilTool.getCourseByA();
+        b=UtilTool.getCourseByB();
+        c=UtilTool.getCourseByC();
 
         return transCourse(a,b,c);
+    }
+
+    @Override
+    public List<CourseVO> getSelectedCourse(String id) {
+        return null;
+    }
+
+    @Override
+    public List<CourseVO> getUnSelectedCourse(String id) {
+        return null;
     }
 
 
@@ -53,10 +63,10 @@ public class CourseServiceImpl implements CourseService{
                 JSONObject obj = jsonArray.getJSONObject(i);
                 CourseVO vo=new CourseVO();
                 vo.setCid((String)obj.get("cid"));
-                vo.setName((String)obj.get("name"));
+                vo.setName((String)obj.get("cname"));
                 vo.setPoint((String)obj.get("point"));
                 vo.setTeacher((String)obj.get("teacher"));
-                vo.setLocation((String)obj.get("location"));
+                vo.setLocation((String)obj.get("place"));
 
                 courseList.add(vo);
             }

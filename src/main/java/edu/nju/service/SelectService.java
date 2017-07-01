@@ -9,7 +9,7 @@ import java.util.List;
  */
 public interface SelectService {
 
-    public List<SelectVO> getAllSelect(String input);
+    public List<SelectVO> getAllSelect();
 
     public void select(SelectVO vo);
 

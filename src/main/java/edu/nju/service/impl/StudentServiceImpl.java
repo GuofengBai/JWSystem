@@ -17,9 +17,9 @@ public class StudentServiceImpl implements StudentService{
     @Override
     public List<StudentVO> GetAllStudents() {
         String a,b,c;
-        a="";
-        b="";
-        c="";
+        a=UtilTool.getStudentByA();
+        b=UtilTool.getStudentByB();
+        c=UtilTool.getStudentByC();
 
         return transStudent(a,b,c);
     }
@@ -51,10 +51,10 @@ public class StudentServiceImpl implements StudentService{
             for(int i=0;i<jsonArray.size();i++){
                 JSONObject obj = jsonArray.getJSONObject(i);
                 StudentVO vo=new StudentVO();
-                vo.setId((String)obj.get("id"));
+                vo.setId((String)obj.get("sid"));
                 vo.setName((String)obj.get("name"));
-                vo.setMajor((String)obj.get("major"));
-                vo.setGender((String)obj.get("gender"));
+                vo.setMajor((String)obj.get("college"));
+                vo.setGender((String)obj.get("sex"));
 
                 studentList.add(vo);
             }
