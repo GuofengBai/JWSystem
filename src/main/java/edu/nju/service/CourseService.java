@@ -17,12 +17,6 @@ import java.util.List;
 public interface CourseService {
     public List<CourseVO> transCourse(String a, String b, String c);
 
-    public List<CourseVO> transCourseA(String input);
-
-    public List<CourseVO> transCourseB(String input);
-
-    public List<CourseVO> transCourseC(String input);
-
-    public List<SelectVO> transSelect(String input);
+    public List<CourseVO> getAllCourse();
 
 }

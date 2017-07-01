@@ -34,6 +34,16 @@ public class CourseServiceImpl implements CourseService{
         return courseList;
     }
 
+    @Override
+    public List<CourseVO> getAllCourse() {
+        String a,b,c;
+        a="";
+        b="";
+        c="";
+
+        return transCourse(a,b,c);
+    }
+
 
     public List<CourseVO> transCourseA(String input){
         List<CourseVO> courseList=new ArrayList<CourseVO>();
@@ -97,20 +107,5 @@ public class CourseServiceImpl implements CourseService{
     }
 
 
-    public List<SelectVO> transSelect(String input){
-        List<SelectVO> selectList=new ArrayList<SelectVO>();
-        JSONArray jsonArray = JSONArray.fromObject(input);
-        if(jsonArray.size()>0){
-            for(int i=0;i<jsonArray.size();i++){
-                JSONObject obj = jsonArray.getJSONObject(i);
-                SelectVO vo=new SelectVO();
-                vo.setCid((String)obj.get("cid"));
-                vo.setSid((String)obj.get("id"));
-                selectList.add(vo);
-            }
 
-        }
-
-        return selectList;
-    }
 }

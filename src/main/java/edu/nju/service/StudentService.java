@@ -13,12 +13,8 @@ import java.util.List;
  */
 
 public interface StudentService {
+    public List<StudentVO> GetAllStudents();
+
     public List<StudentVO> transStudent(String a, String b, String c);
-
-    public List<StudentVO> transStudentA(String input);
-
-    public List<StudentVO> transStudentB(String input);
-
-    public List<StudentVO> transStudentC(String input);
 
 }

@@ -14,6 +14,16 @@ import java.util.List;
  */
 @Service
 public class StudentServiceImpl implements StudentService{
+    @Override
+    public List<StudentVO> GetAllStudents() {
+        String a,b,c;
+        a="";
+        b="";
+        c="";
+
+        return transStudent(a,b,c);
+    }
+
     public List<StudentVO> transStudent(String a, String b, String c) {
         List<StudentVO> studentList=new ArrayList<StudentVO>();
         List<StudentVO> studentListA=transStudentA(a);
@@ -44,6 +54,7 @@ public class StudentServiceImpl implements StudentService{
                 vo.setId((String)obj.get("id"));
                 vo.setName((String)obj.get("name"));
                 vo.setMajor((String)obj.get("major"));
+                vo.setGender((String)obj.get("gender"));
 
                 studentList.add(vo);
             }
@@ -63,7 +74,7 @@ public class StudentServiceImpl implements StudentService{
                 vo.setId((String)obj.get("id"));
                 vo.setName((String)obj.get("name"));
                 vo.setMajor((String)obj.get("major"));
-
+                vo.setGender((String)obj.get("gender"));
                 studentList.add(vo);
             }
 
@@ -81,8 +92,8 @@ public class StudentServiceImpl implements StudentService{
                 StudentVO vo=new StudentVO();
                 vo.setId((String)obj.get("0"));
                 vo.setName((String)obj.get("1"));
-                vo.setMajor((String)obj.get("2"));
-
+                vo.setMajor((String)obj.get("3"));
+                vo.setGender((String)obj.get("2"));
                 studentList.add(vo);
             }
 
