@@ -12,6 +12,7 @@ import java.util.List;
 /**
  * Created by xinyu on 2017/7/1.
  */
+@Service
 public class SelectServiceImpl implements SelectService{
     public List<SelectVO> transSelect(String a,String b,String c){
         List<SelectVO> selectList=new ArrayList<SelectVO>();
