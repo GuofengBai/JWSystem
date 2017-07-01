@@ -7,6 +7,7 @@ public class StudentVO {
     private String id;
     private String name;
     private String major;
+    private String gender;
 
     public StudentVO() {
     }
@@ -39,5 +40,13 @@ public class StudentVO {
 
     public void setMajor(String major) {
         this.major = major;
+    }
+    
+    public String getGender(){
+        return gender;
+    }
+    
+    public void setGender(String gender){
+        this.gender=gender;
     }
 }

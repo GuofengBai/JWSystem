@@ -13,11 +13,12 @@
 <body>
 <form action="" method="post" name="login">
     <p>用户名</p><br>
-    <input id="username" value="${username}" type="text">
+    <input id="username" name="username" value="${username}" type="text">
     <p>密码</p><br>
-    <input id="passowrd" value="${password}" type="password">
-    <br>
+    <input id="passowrd" name="passowrd" value="${password}" type="password">
+    <p>登录</p><br>
     <input id="submit" value="登录" type="submit">
 </form>
+<a href="/admin">登录教务员账号</a>
 </body>
 </html>
