@@ -1,6 +1,7 @@
 package edu.nju.service.impl;
 
 import edu.nju.service.CourseService;
+import edu.nju.util.UtilTool;
 import edu.nju.vo.CourseVO;
 import edu.nju.vo.SelectVO;
 import net.sf.json.JSONArray;
@@ -37,21 +38,31 @@ public class CourseServiceImpl implements CourseService{
     @Override
     public List<CourseVO> getAllCourse() {
         String a,b,c;
-        a=UtilTool.getCourseByA();
-        b=UtilTool.getCourseByB();
-        c=UtilTool.getCourseByC();
+        a= UtilTool.getAllCourseByA();
+        b=UtilTool.getAllCourseByB();
+        c=UtilTool.getAllCourseByC();
 
         return transCourse(a,b,c);
     }
 
     @Override
     public List<CourseVO> getSelectedCourse(String id) {
-        return null;
+        String a,b,c;
+        a= UtilTool.getSelectedByA(id);
+        b=UtilTool.getSelectedByB(id);
+        c=UtilTool.getSelectedByC(id);
+
+        return transCourse(a,b,c);
     }
 
     @Override
     public List<CourseVO> getUnSelectedCourse(String id) {
-        return null;
+        String a,b,c;
+        a= UtilTool.getUnselectedByA(id);
+        b=UtilTool.getUnselectedByB(id);
+        c=UtilTool.getUnselectedByC(id);
+
+        return transCourse(a,b,c);
     }
 
 

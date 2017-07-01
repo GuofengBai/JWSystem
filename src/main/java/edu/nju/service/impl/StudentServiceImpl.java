@@ -1,6 +1,7 @@
 package edu.nju.service.impl;
 
 import edu.nju.service.StudentService;
+import edu.nju.util.UtilTool;
 import edu.nju.vo.StudentVO;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
@@ -17,9 +18,9 @@ public class StudentServiceImpl implements StudentService{
     @Override
     public List<StudentVO> GetAllStudents() {
         String a,b,c;
-        a=UtilTool.getStudentByA();
-        b=UtilTool.getStudentByB();
-        c=UtilTool.getStudentByC();
+        a=UtilTool.getAllStuByA();
+        b=UtilTool.getAllStuByB();
+        c= UtilTool.getAllStuByC();
 
         return transStudent(a,b,c);
     }

@@ -1,6 +1,7 @@
 package edu.nju.service.impl;
 
 import edu.nju.service.SelectService;
+import edu.nju.util.UtilTool;
 import edu.nju.vo.SelectVO;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
@@ -86,20 +87,35 @@ public class SelectServiceImpl implements SelectService{
     @Override
     public List<SelectVO> getAllSelect() {
         String a,b,c;
-        a=UtilTool.getSelectByA();
-        b=UtilTool.getSelectByB();
-        c=UtilTool.getSelectByC();
+        a= UtilTool.getAllSelectedByA();
+        b=UtilTool.getAllSelectedByB();
+        c=UtilTool.getAllSelectedByC();
 
         return transSelect(a,b,c);
     }
 
     @Override
     public void select(SelectVO vo) {
-        UtilTool.selectByA(vo.getSid(),vo.getCid());
+        if(vo.getCid().charAt(0)=='a'){
+            UtilTool.selectCourseByA(vo.getCid(),vo.getSid());
+        }else if(vo.getCid().charAt(0)=='b'){
+            UtilTool.selectCourseByB(vo.getCid(),vo.getSid());
+        }else {
+            UtilTool.selectCourseByC(vo.getCid(),vo.getSid());
+        }
+
+
     }
 
     @Override
     public void drop(SelectVO vo) {
-        UtilTool.dropByA(vo.getSid(),vo.getCid());
+        if(vo.getCid().charAt(0)=='a'){
+            UtilTool.dropCourseByA(vo.getCid(),vo.getSid());
+        }else if(vo.getCid().charAt(0)=='b'){
+            UtilTool.dropCourseByB(vo.getCid(),vo.getSid());
+        }else {
+            UtilTool.dropCourseByC(vo.getCid(),vo.getSid());
+        }
+
     }
 }
