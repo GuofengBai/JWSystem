@@ -8,6 +8,6 @@ import edu.nju.util.UtilTool;
 public class test {
     public static void main(String args[]){
         UtilTool.init();
-        System.out.println(UtilTool.getAllCourseByC());
+        System.out.println(UtilTool.getUnselectedByC("c00000001"));
     }
 }

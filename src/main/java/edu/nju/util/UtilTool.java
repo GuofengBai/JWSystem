@@ -1,18 +1,12 @@
 package edu.nju.util;
 
 import org.apache.http.HttpResponse;
-import org.apache.http.HttpStatus;
+import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.DefaultHttpClient;
-import org.apache.http.util.EntityUtils;
 
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.net.URI;
-import java.net.URISyntaxException;
-import java.net.URL;
 
 /**
  * Created by lenovo on 2017/7/1.
@@ -35,8 +29,9 @@ public class UtilTool {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-
-
+		ipA="http://"+ipA;
+		ipB="http://"+ipB;
+		ipC="http://"+ipC;
 	}
 
 	public static String getAllCourseByA() {
@@ -125,31 +120,39 @@ public class UtilTool {
 		return httpGet(ipC + "/jwc/remoteUnElective/" + sid + "/" + cid);
 	}
 
-	public static String httpGet(String urlstr) {
+	public static String httpGet(String url) {
 		// get请求返回结果
-		String strResult = "";
+		BufferedReader in = null;
+
+		String content = null;
 		try {
-			DefaultHttpClient client = new DefaultHttpClient();
-			// 发送get请求
-			URL url = new URL(urlstr);
-			URI uri = null;
-			try {
-				uri = new URI(url.getProtocol(), url.getHost(), url.getPath(), url.getQuery(), null);
-			} catch (URISyntaxException e) {
-				e.printStackTrace();
-			}
-			HttpGet request = new HttpGet(uri);
+			// 定义HttpClient
+			HttpClient client = new DefaultHttpClient();
+			// 实例化HTTP方法
+			HttpGet request = new HttpGet();
+			request.setURI(new URI(url));
 			HttpResponse response = client.execute(request);
 
-			/** 请求发送成功，并得到响应 **/
-			if (response.getStatusLine().getStatusCode() == HttpStatus.SC_OK) {
-				/** 读取服务器返回过来的json字符串数据 **/
-				strResult = EntityUtils.toString(response.getEntity());
+			in = new BufferedReader(new InputStreamReader(response.getEntity()
+					.getContent()));
+			StringBuffer sb = new StringBuffer("");
+			String line = "";
+			String NL = System.getProperty("line.separator");
+			while ((line = in.readLine()) != null) {
+				sb.append(line + NL);
 			}
-		} catch (IOException e) {
-			System.out.println("get请求提交失败:" + urlstr);
+			in.close();
+			content = sb.toString();
+		} finally {
+			if (in != null) {
+				try {
+					in.close();// 最后要关闭BufferedReader
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+			return content;
 		}
-		return strResult;
 	}
 
 }
