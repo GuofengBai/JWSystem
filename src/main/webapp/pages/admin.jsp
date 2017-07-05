@@ -26,13 +26,13 @@
         <td>上课地点</td>
     </tr>
     <%--这里的变量名用了CourseVO，拟定课程编号Cno，课程名称Cnm，课程学分Cpt，任课教师Tea，上课地点Pla--%>
-    <c:forEach items="${CourseVO}" var="course">
+    <c:forEach items="${courseVO}" var="course">
         <tr>
-            <td>${course.Cno}</td>
-            <td>${course.Cnm}</td>
-            <td>${course.Cpt}</td>
-            <td>${course.Tea}</td>
-            <td>${course.Pla}</td>
+            <td>${course.cid}</td>
+            <td>${course.name}</td>
+            <td>${course.point}</td>
+            <td>${course.teacher}</td>
+            <td>${course.location}</td>
         </tr>
     </c:forEach>
 </table>
@@ -45,8 +45,8 @@
     <%--这里的变量名用了ElectiveVO，拟定课程编号Cno，学生编号（学号）Sno。成绩Grd--%>
     <c:forEach items="${ElectiveVO}" var="elective">
         <tr>
-            <td>${elective.Cno}</td>
-            <td>${elective.Sno}</td>
+            <td>${elective.cid}</td>
+            <td>${elective.sid}</td>
         </tr>
     </c:forEach>
 </table>
@@ -61,10 +61,10 @@
     <%--这里的变量名用了StudentVO，拟定学生编号（学号）Sno。姓名Snm，性别Sex，院系Sde--%>
     <c:forEach items="${StudentVO}" var="student">
         <tr>
-            <td>${student.Sno}</td>
-            <td>${student.Snm}</td>
-            <td>${student.Sex}</td>
-            <td>${student.Sde}</td>
+            <td>${student.id}</td>
+            <td>${student.name}</td>
+            <td>${student.gender}</td>
+            <td>${student.major}</td>
         </tr>
     </c:forEach>
 </table>

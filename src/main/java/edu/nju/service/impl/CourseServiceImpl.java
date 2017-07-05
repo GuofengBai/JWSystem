@@ -3,7 +3,6 @@ package edu.nju.service.impl;
 import edu.nju.service.CourseService;
 import edu.nju.util.UtilTool;
 import edu.nju.vo.CourseVO;
-import edu.nju.vo.SelectVO;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 import org.springframework.stereotype.Service;
@@ -35,7 +34,7 @@ public class CourseServiceImpl implements CourseService{
         return courseList;
     }
 
-    @Override
+
     public List<CourseVO> getAllCourse() {
         String a,b,c;
         a= UtilTool.getAllCourseByA();
@@ -45,7 +44,7 @@ public class CourseServiceImpl implements CourseService{
         return transCourse(a,b,c);
     }
 
-    @Override
+
     public List<CourseVO> getSelectedCourse(String id) {
         String a,b,c;
         a= UtilTool.getSelectedByA(id);
@@ -55,7 +54,7 @@ public class CourseServiceImpl implements CourseService{
         return transCourse(a,b,c);
     }
 
-    @Override
+
     public List<CourseVO> getUnSelectedCourse(String id) {
         String a,b,c;
         a= UtilTool.getUnselectedByA(id);

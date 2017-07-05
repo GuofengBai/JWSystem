@@ -10,6 +10,9 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.net.URL;
 
 /**
  * Created by lenovo on 2017/7/1.
@@ -46,7 +49,7 @@ public class UtilTool {
 	}
 
 	public static String getAllCourseByC() {
-		return httpGet((ipC + "jwc/getCourse"));
+		return httpGet((ipC + "/jwc/getCourse"));
 	}
 
 	public static String getAllStuByA() {
@@ -58,7 +61,7 @@ public class UtilTool {
 	}
 
 	public static String getAllStuByC() {
-		return httpGet(ipC + "jwc/getStudent");
+		return httpGet(ipC + "/jwc/getStudent");
 	}
 
 	public static String getAllSelectedByA() {
@@ -70,7 +73,7 @@ public class UtilTool {
 	}
 
 	public static String getAllSelectedByC() {
-		return httpGet(ipC + "jwc/getElective");
+		return httpGet(ipC + "/jwc/getElective");
 	}
 
 	public static String getSelectedByA(String sid) {
@@ -122,13 +125,20 @@ public class UtilTool {
 		return httpGet(ipC + "/jwc/remoteUnElective/" + sid + "/" + cid);
 	}
 
-	public static String httpGet(String url) {
+	public static String httpGet(String urlstr) {
 		// get请求返回结果
 		String strResult = "";
 		try {
 			DefaultHttpClient client = new DefaultHttpClient();
 			// 发送get请求
-			HttpGet request = new HttpGet(url);
+			URL url = new URL(urlstr);
+			URI uri = null;
+			try {
+				uri = new URI(url.getProtocol(), url.getHost(), url.getPath(), url.getQuery(), null);
+			} catch (URISyntaxException e) {
+				e.printStackTrace();
+			}
+			HttpGet request = new HttpGet(uri);
 			HttpResponse response = client.execute(request);
 
 			/** 请求发送成功，并得到响应 **/
@@ -137,7 +147,7 @@ public class UtilTool {
 				strResult = EntityUtils.toString(response.getEntity());
 			}
 		} catch (IOException e) {
-			System.out.println("get请求提交失败:" + url);
+			System.out.println("get请求提交失败:" + urlstr);
 		}
 		return strResult;
 	}

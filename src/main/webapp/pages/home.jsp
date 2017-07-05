@@ -25,15 +25,15 @@
         <td>上课地点</td>
         <td>课程退选</td>
     </tr>
-    <c:forEach items="${Course1VO}" var="course1">
+    <c:forEach items="${courseSelected}" var="course1">
         <tr>
-            <td>${course1.Cno}</td>
-            <td>${course1.Cnm}</td>
-            <td>${course1.Cpt}</td>
-            <td>${course1.Tea}</td>
-            <td>${course1.Pla}</td>
+            <td>${course1.cid}</td>
+            <td>${course1.name}</td>
+            <td>${course1.point}</td>
+            <td>${course1.teacher}</td>
+            <td>${course1.location}</td>
                 <%--需要student变量——学号--%>
-            <td><<a href="<%=request.getContextPath()%>/deleteElective/${username}/${course1.Cno}">点击退选</a></td>
+            <td><<a href="<%=request.getContextPath()%>/deleteElective/${username}/${course1.cid}">点击退选</a></td>
         </tr>
     </c:forEach>
 </table>
@@ -47,15 +47,15 @@
         <td>上课地点</td>
         <td>课程选择</td>
     </tr>
-    <c:forEach items="${Course2VO}" var="course2">
+    <c:forEach items="${courseUnSelected}" var="course2">
         <tr>
-            <td>${course2.Cno}</td>
-            <td>${course2.Cnm}</td>
-            <td>${course2.Cpt}</td>
-            <td>${course2.Tea}</td>
-            <td>${course2.Pla}</td>
+            <td>${course2.cid}</td>
+            <td>${course2.name}</td>
+            <td>${course2.point}</td>
+            <td>${course2.teacher}</td>
+            <td>${course2.location}</td>
                 <%--需要student变量——学号--%>
-            <td><<a href="<%=request.getContextPath()%>/elective/${username}/${course2.Cno}">点击选课</a></td>
+            <td><<a href="<%=request.getContextPath()%>/elective/${username}/${course2.cid}">点击选课</a></td>
         </tr>
     </c:forEach>
 </table>

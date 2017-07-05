@@ -5,6 +5,7 @@ import edu.nju.util.UtilTool;
 import edu.nju.vo.SelectVO;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -85,7 +86,7 @@ public class SelectServiceImpl implements SelectService{
         return selectList;
     }
 
-    @Override
+
     public List<SelectVO> getAllSelect() {
         String a,b,c;
         a= UtilTool.getAllSelectedByA();
@@ -95,7 +96,7 @@ public class SelectServiceImpl implements SelectService{
         return transSelect(a,b,c);
     }
 
-    @Override
+
     public void select(SelectVO vo) {
         if(vo.getCid().charAt(0)=='a'){
             UtilTool.selectCourseByA(vo.getCid(),vo.getSid());
@@ -108,7 +109,7 @@ public class SelectServiceImpl implements SelectService{
 
     }
 
-    @Override
+
     public void drop(SelectVO vo) {
         if(vo.getCid().charAt(0)=='a'){
             UtilTool.dropCourseByA(vo.getCid(),vo.getSid());
