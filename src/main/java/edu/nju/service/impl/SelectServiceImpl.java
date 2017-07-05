@@ -23,12 +23,15 @@ public class SelectServiceImpl implements SelectService{
         List<SelectVO> selectListC=transSelectC(c);
         for(int i=0;i<selectListA.size();i++){
             selectList.add(selectListA.get(i));
+            System.out.println(selectListA.get(i).toString());
         }
         for(int i=0;i<selectListB.size();i++){
             selectList.add(selectListB.get(i));
+            System.out.println(selectListB.get(i).toString());
         }
         for(int i=0;i<selectListC.size();i++){
             selectList.add(selectListC.get(i));
+            System.out.println(selectListC.get(i).toString());
         }
 
         return selectList;
@@ -74,10 +77,10 @@ public class SelectServiceImpl implements SelectService{
         JSONArray jsonArray = JSONArray.fromObject(input);
         if(jsonArray.size()>0){
             for(int i=0;i<jsonArray.size();i++){
-                JSONObject obj = jsonArray.getJSONObject(i);
+                JSONArray obj = jsonArray.getJSONArray(i);
                 SelectVO vo=new SelectVO();
-                vo.setCid((String)obj.get("0"));
-                vo.setSid((String)obj.get("1"));
+                vo.setCid((String) obj.get(0));
+                vo.setSid((String) obj.get(1));
                 selectList.add(vo);
             }
 

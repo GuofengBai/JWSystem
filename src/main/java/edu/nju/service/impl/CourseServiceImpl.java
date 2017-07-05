@@ -22,12 +22,15 @@ public class CourseServiceImpl implements CourseService{
         List<CourseVO> courseListC=transCourseC(c);
         for(int i=0;i<courseListA.size();i++){
             courseList.add(courseListA.get(i));
+            System.out.println(courseListA.get(i).toString());
         }
         for(int i=0;i<courseListB.size();i++){
             courseList.add(courseListB.get(i));
+            System.out.println(courseListB.get(i).toString());
         }
         for(int i=0;i<courseListC.size();i++){
             courseList.add(courseListC.get(i));
+            System.out.println(courseListC.get(i).toString());
         }
 
 
@@ -111,13 +114,13 @@ public class CourseServiceImpl implements CourseService{
         JSONArray jsonArray = JSONArray.fromObject(input);
         if(jsonArray.size()>0){
             for(int i=0;i<jsonArray.size();i++){
-                JSONObject obj = jsonArray.getJSONObject(i);
+                JSONArray obj = jsonArray.getJSONArray(i);
                 CourseVO vo=new CourseVO();
-                vo.setCid((String)obj.get("0"));
-                vo.setName((String)obj.get("1"));
-                vo.setPoint((String)obj.get("3"));
-                vo.setTeacher((String)obj.get("4"));
-                vo.setLocation((String)obj.get("5"));
+                vo.setCid((String) obj.get(0));
+                vo.setName((String) obj.get(1));
+                vo.setPoint(obj.get(3).toString());
+                vo.setTeacher((String) obj.get(5));
+                vo.setLocation((String) obj.get(5));
                 courseList.add(vo);
             }
 

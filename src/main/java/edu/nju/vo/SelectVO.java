@@ -30,4 +30,12 @@ public class SelectVO {
     public void setSid(String sid) {
         this.sid = sid;
     }
+
+    @Override
+    public String toString() {
+        return "SelectVO{" +
+                "cid='" + cid + '\'' +
+                ", sid='" + sid + '\'' +
+                '}';
+    }
 }

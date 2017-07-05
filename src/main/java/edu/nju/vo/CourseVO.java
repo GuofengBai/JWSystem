@@ -65,4 +65,15 @@ public class CourseVO {
     public void setLocation(String location) {
         this.location = location;
     }
+
+    @Override
+    public String toString() {
+        return "CourseVO{" +
+                "cid='" + cid + '\'' +
+                ", name='" + name + '\'' +
+                ", point='" + point + '\'' +
+                ", teacher='" + teacher + '\'' +
+                ", location='" + location + '\'' +
+                '}';
+    }
 }

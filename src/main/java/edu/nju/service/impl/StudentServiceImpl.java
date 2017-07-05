@@ -15,7 +15,7 @@ import java.util.List;
  */
 @Service
 public class StudentServiceImpl implements StudentService{
-    @Override
+
     public List<StudentVO> GetAllStudents() {
         String a,b,c;
         a=UtilTool.getAllStuByA();
@@ -32,12 +32,15 @@ public class StudentServiceImpl implements StudentService{
         List<StudentVO> studentListC=transStudentC(c);
         for(int i=0;i<studentListA.size();i++){
             studentList.add(studentListA.get(i));
+            System.out.println(studentListA.get(i).toString());
         }
         for(int i=0;i<studentListB.size();i++){
             studentList.add(studentListB.get(i));
+            System.out.println(studentListB.get(i).toString());
         }
         for(int i=0;i<studentListC.size();i++){
             studentList.add(studentListC.get(i));
+            System.out.println(studentListC.get(i).toString());
         }
 
 
@@ -89,12 +92,12 @@ public class StudentServiceImpl implements StudentService{
         JSONArray jsonArray = JSONArray.fromObject(input);
         if(jsonArray.size()>0){
             for(int i=0;i<jsonArray.size();i++){
-                JSONObject obj = jsonArray.getJSONObject(i);
+                JSONArray obj = jsonArray.getJSONArray(i);
                 StudentVO vo=new StudentVO();
-                vo.setId((String)obj.get("0"));
-                vo.setName((String)obj.get("1"));
-                vo.setMajor((String)obj.get("3"));
-                vo.setGender((String)obj.get("2"));
+                vo.setId((String) obj.get(0));
+                vo.setName((String) obj.get(1));
+                vo.setMajor((String) obj.get(3));
+                vo.setGender((String) obj.get(2));
                 studentList.add(vo);
             }
 

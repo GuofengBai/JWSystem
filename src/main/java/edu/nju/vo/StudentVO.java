@@ -49,4 +49,14 @@ public class StudentVO {
     public void setGender(String gender){
         this.gender=gender;
     }
+
+    @Override
+    public String toString() {
+        return "StudentVO{" +
+                "id='" + id + '\'' +
+                ", name='" + name + '\'' +
+                ", major='" + major + '\'' +
+                ", gender='" + gender + '\'' +
+                '}';
+    }
 }

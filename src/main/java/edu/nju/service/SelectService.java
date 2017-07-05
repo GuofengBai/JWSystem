@@ -9,6 +9,8 @@ import java.util.List;
  */
 public interface SelectService {
 
+    public List<SelectVO> transSelect(String a, String b, String c);
+
     public List<SelectVO> getAllSelect();
 
     public void select(SelectVO vo);

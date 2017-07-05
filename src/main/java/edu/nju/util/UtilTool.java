@@ -64,7 +64,7 @@ public class UtilTool {
 	}
 
 	public static String getAllSelectedByB() {
-		return httpGet(ipB + "jwb/getAllSelect");
+		return httpGet(ipB + "/api/jwb/getAllSelect");
 	}
 
 	public static String getAllSelectedByC() {
