@@ -73,21 +73,13 @@ public class LoginController {
     public ModelAndView elective(ModelMap model, @PathVariable("username") String username, @PathVariable("courseid") String courseid, HttpServletRequest request) {
         SelectVO vo = new SelectVO(courseid, username);
         selectService.select(vo);
-        List<CourseVO> course1 = courseService.getSelectedCourse(username);
-        model.addAttribute("courseSelected", course1);
-        List<CourseVO> course2 = courseService.getUnSelectedCourse(username);
-        model.addAttribute("courseUnSelected", course2);
-        return new ModelAndView("home");
+        return new ModelAndView("redirect:/home");
     }
 
     @RequestMapping(value = "/deleteElective/{username}/{courseid}", method = RequestMethod.GET)
     public ModelAndView deleteElective(ModelMap model, @PathVariable("username") String username, @PathVariable("courseid") String courseid, HttpServletRequest request) {
         SelectVO vo = new SelectVO(courseid, username);
         selectService.drop(vo);
-        List<CourseVO> course1 = courseService.getSelectedCourse(username);
-        model.addAttribute("courseSelected", course1);
-        List<CourseVO> course2 = courseService.getUnSelectedCourse(username);
-        model.addAttribute("courseUnSelected", course2);
-        return new ModelAndView("home");
+        return new ModelAndView("redirect:/home");
     }
 }
