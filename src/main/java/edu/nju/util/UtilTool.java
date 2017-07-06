@@ -5,7 +5,8 @@ import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.DefaultHttpClient;
 
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
 import java.net.URI;
 
 /**
@@ -17,24 +18,15 @@ public class UtilTool {
 	public static String ipC;
 
 	public static void init() {
-		BufferedReader bf = null;
-		try {
-			bf = new BufferedReader(new FileReader("ip.txt"));
-			ipA = bf.readLine();
-			ipB = bf.readLine();
-			ipC = bf.readLine();
-			bf.close();
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		ipA="http://"+ipA;
-		ipB="http://"+ipB;
-		ipC="http://"+ipC;
+
+		ipA = "http://172.17.250.73:8080";
+		ipB = "http://172.17.208.24:80";
+		ipC = "http://172.17.199.151:4433";
 	}
 
+
 	public static String getAllCourseByA() {
+
 		return httpGet(ipA + "/sysA/getallcourse");
 
 	}
@@ -48,7 +40,7 @@ public class UtilTool {
 	}
 
 	public static String getAllStuByA() {
-		return httpGet(ipA + "sysA/getallstu");
+		return httpGet(ipA + "/sysA/getallstu");
 	}
 
 	public static String getAllStuByB() {
@@ -60,7 +52,7 @@ public class UtilTool {
 	}
 
 	public static String getAllSelectedByA() {
-		return httpGet(ipA + "sysA/getallselected");
+		return httpGet(ipA + "/sysA/getallselected");
 	}
 
 	public static String getAllSelectedByB() {
@@ -72,7 +64,7 @@ public class UtilTool {
 	}
 
 	public static String getSelectedByA(String sid) {
-		return httpGet(ipA + "sysA/getselected/" + sid);
+		return httpGet(ipA + "/sysA/getselected/" + sid);
 	}
 
 	public static String getSelectedByB(String sid) {
@@ -84,7 +76,7 @@ public class UtilTool {
 	}
 
 	public static String getUnselectedByA(String sid) {
-		return httpGet(ipA + "sysA/getunselected/" + sid);
+		return httpGet(ipA + "/sysA/getunselected/" + sid);
 	}
 
 	public static String getUnselectedByB(String sid) {
@@ -96,7 +88,7 @@ public class UtilTool {
 	}
 
 	public static String selectCourseByA(String cid, String sid) {
-		return httpGet(ipA + "/SysA/select/" + cid + "/" + sid);
+		return httpGet(ipA + "/sysA/select/" + cid + "/" + sid);
 	}
 
 	public static String selectCourseByB(String cid, String sid) {

@@ -69,14 +69,14 @@ public class LoginController {
         return new ModelAndView("admin");
     }
 
-    @RequestMapping(value = "/elective/{username}/{courseid}", method = RequestMethod.POST)
+    @RequestMapping(value = "/elective/{username}/{courseid}", method = RequestMethod.GET)
     public ModelAndView elective(ModelMap model, @PathVariable("username") String username, @PathVariable("courseid") String courseid, HttpServletRequest request) {
         SelectVO vo=new SelectVO(courseid,username);
         selectService.select(vo);
         return new ModelAndView("home");
     }
 
-    @RequestMapping(value = "/deleteElective/{username}/{courseid}", method = RequestMethod.POST)
+    @RequestMapping(value = "/deleteElective/{username}/{courseid}", method = RequestMethod.GET)
     public ModelAndView deleteElective(ModelMap model, @PathVariable("username") String username, @PathVariable("courseid") String courseid, HttpServletRequest request) {
         SelectVO vo=new SelectVO(courseid,username);
         selectService.drop(vo);

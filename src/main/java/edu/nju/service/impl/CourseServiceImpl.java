@@ -75,9 +75,9 @@ public class CourseServiceImpl implements CourseService{
             for(int i=0;i<jsonArray.size();i++){
                 JSONObject obj = jsonArray.getJSONObject(i);
                 CourseVO vo=new CourseVO();
-                vo.setCid((String)obj.get("cid"));
+                vo.setCid(obj.get("cid").toString());
                 vo.setName((String)obj.get("cname"));
-                vo.setPoint((String)obj.get("point"));
+                vo.setPoint(obj.get("point").toString());
                 vo.setTeacher((String)obj.get("teacher"));
                 vo.setLocation((String)obj.get("place"));
 
@@ -85,7 +85,6 @@ public class CourseServiceImpl implements CourseService{
             }
 
         }
-
         return courseList;
     }
 
