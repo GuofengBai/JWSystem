@@ -50,36 +50,44 @@ public class LoginController {
     @RequestMapping(value = "/home", method = RequestMethod.GET)
     public ModelAndView showHomePage(Model model, HttpServletRequest request) {
 
-        String username=(String)request.getSession().getAttribute("username");
-        List<CourseVO> course1=courseService.getSelectedCourse(username);
-        model.addAttribute("courseSelected",course1);
-        List<CourseVO> course2=courseService.getUnSelectedCourse(username);
-        model.addAttribute("courseUnSelected",course2);
+        String username = (String) request.getSession().getAttribute("username");
+        List<CourseVO> course1 = courseService.getSelectedCourse(username);
+        model.addAttribute("courseSelected", course1);
+        List<CourseVO> course2 = courseService.getUnSelectedCourse(username);
+        model.addAttribute("courseUnSelected", course2);
         return new ModelAndView("home");
     }
 
     @RequestMapping(value = "/admin", method = RequestMethod.GET)
     public ModelAndView showAdminPage(Model model, HttpServletRequest request) {
-        List<CourseVO> course=courseService.getAllCourse();
-        model.addAttribute("courseVO",course);
-        List<SelectVO> select=selectService.getAllSelect();
-        model.addAttribute("ElectiveVO",select);
-        List<StudentVO> student=studentService.GetAllStudents();
-        model.addAttribute("StudentVO",student);
+        List<CourseVO> course = courseService.getAllCourse();
+        model.addAttribute("courseVO", course);
+        List<SelectVO> select = selectService.getAllSelect();
+        model.addAttribute("ElectiveVO", select);
+        List<StudentVO> student = studentService.GetAllStudents();
+        model.addAttribute("StudentVO", student);
         return new ModelAndView("admin");
     }
 
     @RequestMapping(value = "/elective/{username}/{courseid}", method = RequestMethod.GET)
     public ModelAndView elective(ModelMap model, @PathVariable("username") String username, @PathVariable("courseid") String courseid, HttpServletRequest request) {
-        SelectVO vo=new SelectVO(courseid,username);
+        SelectVO vo = new SelectVO(courseid, username);
         selectService.select(vo);
+        List<CourseVO> course1 = courseService.getSelectedCourse(username);
+        model.addAttribute("courseSelected", course1);
+        List<CourseVO> course2 = courseService.getUnSelectedCourse(username);
+        model.addAttribute("courseUnSelected", course2);
         return new ModelAndView("home");
     }
 
     @RequestMapping(value = "/deleteElective/{username}/{courseid}", method = RequestMethod.GET)
     public ModelAndView deleteElective(ModelMap model, @PathVariable("username") String username, @PathVariable("courseid") String courseid, HttpServletRequest request) {
-        SelectVO vo=new SelectVO(courseid,username);
+        SelectVO vo = new SelectVO(courseid, username);
         selectService.drop(vo);
+        List<CourseVO> course1 = courseService.getSelectedCourse(username);
+        model.addAttribute("courseSelected", course1);
+        List<CourseVO> course2 = courseService.getUnSelectedCourse(username);
+        model.addAttribute("courseUnSelected", course2);
         return new ModelAndView("home");
     }
 }
